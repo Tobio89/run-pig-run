@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Farmer.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 107.5 )
+
+[node name="Farmer" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AppleBasket" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="AppleCollision" type="CollisionShape2D" parent="AppleBasket"]
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="BaconBasket" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="PigCollision" type="CollisionShape2D" parent="BaconBasket"]
+shape = SubResource( 1 )
+one_way_collision = true
+
+[connection signal="area_entered" from="AppleBasket" to="." method="_on_AppleBasket_area_entered"]
+[connection signal="area_entered" from="BaconBasket" to="." method="_on_BaconBasket_area_entered"]
