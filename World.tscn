@@ -30,7 +30,7 @@ position = Vector2( 380, 90 )
 position = Vector2( -21, 87 )
 
 [node name="ScoreCard" parent="." instance=ExtResource( 2 )]
-position = Vector2( 235, 5 )
+position = Vector2( 272, 2 )
 
 [node name="HungerMeter" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3, 2 )

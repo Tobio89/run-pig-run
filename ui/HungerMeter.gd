@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var bar = $Bar
+onready var bar = $Bar/Bar
 onready var timer = $LifeTimer
 
 var life := 10

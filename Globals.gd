@@ -1,7 +1,7 @@
 extends Node
 
 export var RUN_SPEED:int = 40
-export var EAT_TIME:int = 0.5
+export var EAT_TIME:= 0.7
 
 # Spawning apples
 
