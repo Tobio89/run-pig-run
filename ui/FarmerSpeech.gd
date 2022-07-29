@@ -1,4 +1,4 @@
-extends Label
+extends Node2D
 
 const comeHereMsgs = [
 	"Git back here, you varmint!!",
@@ -24,5 +24,30 @@ const pickUpMsgs = [
 	"*groans* got it"
 ]
 
+const IDLE_TIME := 6
+
+onready var label := $SpeechLabel
+onready var timer := $IdleSpeechTimer
+
 func _ready():
-	text = comeHereMsgs[0]
+	label.setText(comeHereMsgs[0])
+	timer.start(IDLE_TIME)
+
+func _on_IdleSpeechTimer_timeout() -> void:
+	if !Globals.GAME_OVER:
+		label.setText(choose_msg(comeHereMsgs))
+		reset_timer()
+
+func set_eat_msg() -> void:
+	label.setText(choose_msg(eatMsgs))
+	reset_timer()
+
+func set_pick_up_msg() -> void:
+	label.setText(choose_msg(pickUpMsgs))
+	reset_timer()
+
+func choose_msg(msgArray) -> String:
+	return msgArray[randi() % msgArray.size()]
+
+func reset_timer():
+		timer.start(IDLE_TIME)

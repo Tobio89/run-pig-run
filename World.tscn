@@ -53,3 +53,4 @@ position = Vector2( 272, 2 )
 position = Vector2( 3, 2 )
 
 [node name="FarmerSpeech" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1, 166 )

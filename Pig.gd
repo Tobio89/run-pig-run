@@ -13,6 +13,7 @@ onready var sprite := $Sprite
 onready var scoreCard := $'../ScoreCard'
 onready var collision := $Collision
 onready var hungerMeter := $'../HungerMeter'
+onready var farmer := $'../FarmerSpeech'
 
 var isMovingX := false
 var getBoost := false
@@ -76,6 +77,8 @@ func die():
 # When an apple reaches the farmer
 func boost():
 	collision.disabled = true
+	if farmer:
+		farmer.set_pick_up_msg()
 	if !isMovingX:
 		timer.start(BOOST_TIME)
 		isMovingX = true
@@ -95,6 +98,8 @@ func eat_apple(apple:Apple):
 	apple.be_eaten()
 	scoreCard.increase_score()
 	hungerMeter.increase_life()
+	if farmer:
+		farmer.set_eat_msg()
 
 
 # Boost / delay time has elapsed
