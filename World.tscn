@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Pig.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/ScoreCard.tscn" type="PackedScene" id=2]
@@ -6,19 +6,36 @@
 [ext_resource path="res://Globals.gd" type="Script" id=4]
 [ext_resource path="res://AppleSource.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/HungerMeter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/FarmerSpeech.tscn" type="PackedScene" id=7]
 
 [node name="World" type="Node"]
 
 [node name="Globals" type="Node" parent="."]
 script = ExtResource( 4 )
 
-[node name="Background" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+[node name="Background" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Backdrop" type="ColorRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="TopLine" type="Line2D" parent="Background"]
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 320, 0, 0, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="BottomLine" type="Line2D" parent="Background"]
+position = Vector2( 0, 165 )
+points = PoolVector2Array( 320, 0, 0, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
 
 [node name="Pig" parent="." instance=ExtResource( 1 )]
 position = Vector2( 130, 90 )
@@ -34,3 +51,5 @@ position = Vector2( 272, 2 )
 
 [node name="HungerMeter" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3, 2 )
+
+[node name="FarmerSpeech" parent="." instance=ExtResource( 7 )]
